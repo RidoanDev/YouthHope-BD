@@ -1,0 +1,84 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 265 45% 46%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 122 59% 49%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 264 69% 75%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 265 45% 46%;
+
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+@layer components {
+  .hero-section {
+    @apply relative min-h-[600px] flex items-center justify-center overflow-hidden;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&q=80');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .hero-content {
+    @apply z-10 text-center px-4 sm:px-6 lg:px-8 text-white max-w-5xl mx-auto;
+  }
+
+  .section-container {
+    @apply py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto;
+  }
+  
+  .card-hover {
+    @apply transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg;
+  }
+
+  .gradient-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-youth-purple to-youth-light-purple;
+  }
+
+  .button-primary {
+    @apply inline-flex items-center justify-center rounded-md bg-youth-purple px-4 py-2 text-sm font-medium text-white shadow transition-colors hover:bg-youth-purple/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-youth-purple disabled:pointer-events-none disabled:opacity-50;
+  }
+  
+  .button-secondary {
+    @apply inline-flex items-center justify-center rounded-md bg-youth-green px-4 py-2 text-sm font-medium text-white shadow transition-colors hover:bg-youth-green/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-youth-green disabled:pointer-events-none disabled:opacity-50;
+  }
+}
