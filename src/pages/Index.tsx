@@ -9,13 +9,12 @@ const Index = () => {
   return (
     <Layout>
       <HeroSection />
-      {/* ভিডিও সেকশন */}
+      {/* ভিডিও সেকশন যোগ করা হয়েছে */}
       <div className="container mx-auto px-4 py-12">
         <div className="rounded-lg shadow-md overflow-hidden max-w-4xl mx-auto">
           <iframe 
-            src="https://streamable.com/e/mm5pwj?autoplay=1&loop=1&muted=0" 
+            src="https://streamable.com/e/mm5pwj" 
             frameBorder="0" 
-            allow="autoplay; fullscreen"
             allowFullScreen
             className="w-full h-full aspect-video"
           ></iframe>
