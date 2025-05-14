@@ -32,13 +32,14 @@ const About = () => {
               সামাজিক দায়বদ্ধতা বিষয়ে সহায়তা করে থাকি।
             </p>
           </div>
-          <div>
-            <img
-              src="https://images.unsplash.com/photo-1603201667141-5a2d4c673378?auto=format&fit=crop&q=80"
-              alt="Youth Hope Team"
-              className="rounded-lg shadow-md"
-            />
-          </div>
+         <div className="rounded-lg shadow-md overflow-hidden">
+  <iframe 
+    src="https://streamable.com/e/mm5pwj" 
+    frameborder="0" 
+    allowfullscreen
+    className="w-full h-full aspect-video"
+  ></iframe>
+</div>
         </div>
 
         <div className="mt-20">
