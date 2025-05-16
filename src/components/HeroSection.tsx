@@ -20,8 +20,8 @@ const HeroSection = () => {
             className="absolute inset-0 bg-cover bg-center opacity-0"
             style={{
               backgroundImage: `url(${image})`,
-              animation: `fadeInOut ${backgroundImages.length * 2}s infinite`,
-              animationDelay: `${index * 2}s`
+              animation: `fadeInOut ${backgroundImages.length * 3}s infinite`,
+animationDelay: `${index * 3}s`
             }}
           />
         ))}
