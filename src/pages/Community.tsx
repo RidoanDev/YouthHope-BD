@@ -1,7 +1,6 @@
-
 import Layout from '../components/Layout';
 import { Button } from "@/components/ui/button";
-import { MessageSquare, UserPlus, Award, Heart } from 'lucide-react';
+import { MessageSquare, UserPlus, Award, Heart, ExternalLink } from 'lucide-react';
 import CallToAction from '../components/CallToAction';
 
 const communityBenefits = [
@@ -57,7 +56,29 @@ const forumCategories = [
   { name: "ভ্রমণ", count: 25 }
 ];
 
+const whatsappGroups = [
+  {
+    name: "ইয়ুথ হোপ মেইন গ্রুপ",
+    description: "সকল সদস্যদের জন্য মূল গ্রুপ",
+    link: "https://chat.whatsapp.com/[YOUR_MAIN_GROUP_LINK]"
+  },
+  {
+    name: "ক্যারিয়ার ডিসকাশন",
+    description: "ক্যারিয়ার সম্পর্কিত আলোচনা এবং পরামর্শ",
+    link: "https://chat.whatsapp.com/[YOUR_CAREER_GROUP_LINK]"
+  },
+  {
+    name: "মেন্টাল হেলথ সাপোর্ট",
+    description: "মানসিক স্বাস্থ্য বিষয়ক আলোচনা এবং সাপোর্ট",
+    link: "https://chat.whatsapp.com/[YOUR_MENTAL_HEALTH_GROUP_LINK]"
+  }
+];
+
 const Community = () => {
+  const openWhatsAppGroup = (link: string) => {
+    window.open(link, "_blank");
+  };
+
   return (
     <Layout>
       <div className="bg-youth-gray py-12">
@@ -86,8 +107,11 @@ const Community = () => {
               <li>মানসিক স্বাস্থ্য সাপোর্ট গ্রুপ</li>
               <li>এক্সক্লুসিভ ইভেন্ট এবং ওয়ার্কশপ</li>
             </ul>
-            <Button className="bg-youth-purple hover:bg-youth-purple/90">
-              কমিউনিটিতে যোগ দিন
+            <Button 
+              className="bg-youth-purple hover:bg-youth-purple/90"
+              onClick={() => openWhatsAppGroup("https://chat.whatsapp.com/[YOUR_MAIN_GROUP_LINK]")}
+            >
+              WhatsApp গ্রুপে যোগ দিন
             </Button>
           </div>
           <div>
@@ -115,6 +139,32 @@ const Community = () => {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{benefit.title}</h3>
                 <p className="text-youth-dark-gray">{benefit.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        {/* WhatsApp Groups Section */}
+        <div className="mb-20">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-3 gradient-text">WhatsApp কমিউনিটি গ্রুপ</h2>
+            <p className="text-youth-dark-gray max-w-2xl mx-auto">
+              আমাদের WhatsApp গ্রুপে যোগ দিন এবং রিয়েল টাইমে আলোচনায় অংশ নিন
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {whatsappGroups.map((group, index) => (
+              <div key={index} className="bg-white rounded-lg shadow-sm p-6 border border-gray-200 hover:border-youth-purple transition-colors">
+                <h3 className="text-xl font-semibold mb-2">{group.name}</h3>
+                <p className="text-youth-dark-gray mb-4">{group.description}</p>
+                <Button 
+                  variant="outline" 
+                  className="w-full border-youth-purple text-youth-purple hover:bg-youth-purple/10"
+                  onClick={() => openWhatsAppGroup(group.link)}
+                >
+                  গ্রুপে যোগ দিন <ExternalLink className="ml-2 h-4 w-4" />
+                </Button>
               </div>
             ))}
           </div>
@@ -186,8 +236,11 @@ const Community = () => {
               বাংলাদেশের ৫,০০০+ তরুণের সাথে যোগ দিন এবং আপনার ক্যারিয়ার এবং ব্যক্তিগত বিকাশে সহযোগিতা পান।
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button className="bg-youth-purple hover:bg-youth-purple/90">
-                কমিউনিটিতে যোগ দিন
+              <Button 
+                className="bg-youth-purple hover:bg-youth-purple/90"
+                onClick={() => openWhatsAppGroup("https://chat.whatsapp.com/[YOUR_MAIN_GROUP_LINK]")}
+              >
+                WhatsApp গ্রুপে যোগ দিন
               </Button>
               <Button variant="outline" className="border-youth-purple text-youth-purple">
                 আরও জানুন
