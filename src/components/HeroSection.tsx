@@ -10,6 +10,10 @@ const HeroSection = () => {
     'https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'  // Teamwork
   ];
 
+  // Animation duration calculation (2 seconds per image)
+  const imageDuration = 2; // seconds
+  const totalDuration = backgroundImages.length * imageDuration;
+
   return (
     <section className="hero-section relative h-screen flex items-center justify-center">
       {/* Background slideshow */}
@@ -20,8 +24,8 @@ const HeroSection = () => {
             className="absolute inset-0 bg-cover bg-center opacity-0 animate-fade-in-out"
             style={{
               backgroundImage: `url(${image})`,
-              animationDelay: `${index * 5}s`,
-              animationDuration: `${backgroundImages.length * 5}s`
+              animationDelay: `${index * imageDuration}s`,
+              animationDuration: `${totalDuration}s`
             }}
           />
         ))}
