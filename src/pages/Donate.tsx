@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import Layout from '../components/Layout';
 import { Button } from "@/components/ui/button";
@@ -47,14 +46,8 @@ const Donate = () => {
     setIsRecurring(!isRecurring);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle donation processing here
-    console.log({
-      amount: selectedAmount === "custom" ? customAmount : selectedAmount,
-      paymentMethod,
-      isRecurring
-    });
+  const handleGoogleFormClick = () => {
+    window.open("https://forms.gle/Q1SFFKi6DPFeFcXj7", "_blank");
   };
 
   return (
@@ -126,129 +119,39 @@ const Donate = () => {
           <div>
             <div className="bg-white p-8 rounded-lg shadow-sm">
               <h2 className="text-2xl font-bold mb-6 text-center">অনুদান ফর্ম</h2>
-              <form onSubmit={handleSubmit}>
-                <div className="mb-6">
-                  <label className="block text-sm font-medium text-youth-dark-gray mb-2">অনুদানের পরিমাণ</label>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
-                    {donationOptions.map((option) => (
-                      <button
-                        key={option.amount}
-                        type="button"
-                        className={`p-2 text-center rounded-md border ${
-                          selectedAmount === option.amount 
-                            ? 'bg-youth-purple text-white border-youth-purple' 
-                            : 'border-gray-300 hover:border-youth-purple hover:bg-youth-purple/10'
-                        }`}
-                        onClick={() => handleDonationSelect(option.amount)}
-                      >
-                        {option.label}
-                      </button>
-                    ))}
-                  </div>
-                  
-                  {selectedAmount === "custom" && (
-                    <div className="mt-3">
-                      <label className="block text-sm font-medium text-youth-dark-gray mb-1">অন্য পরিমাণ (৳)</label>
-                      <input
-                        type="number"
-                        value={customAmount}
-                        onChange={handleCustomAmountChange}
-                        placeholder="অনুদানের পরিমাণ লিখুন"
-                        className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-youth-purple"
-                        min="100"
-                      />
-                    </div>
-                  )}
-                </div>
-                
-                <div className="mb-6">
-                  <label className="block text-sm font-medium text-youth-dark-gray mb-2">পেমেন্ট পদ্ধতি</label>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                    {[
-                      { id: "bkash", name: "বিকাশ" },
-                      { id: "nagad", name: "নগদ" },
-                      { id: "rocket", name: "রকেট" },
-                      { id: "card", name: "ক্রেডিট/ডেবিট কার্ড" },
-                      { id: "bank", name: "ডিরেক্ট ব্যাংক ট্রান্সফার" }
-                    ].map((method) => (
-                      <button
-                        key={method.id}
-                        type="button"
-                        className={`p-2 text-center rounded-md border ${
-                          paymentMethod === method.id 
-                            ? 'bg-youth-purple text-white border-youth-purple' 
-                            : 'border-gray-300 hover:border-youth-purple hover:bg-youth-purple/10'
-                        }`}
-                        onClick={() => handlePaymentMethodChange(method.id)}
-                      >
-                        {method.name}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-                
-                <div className="mb-6">
-                  <div className="flex items-center gap-2">
-                    <input
-                      type="checkbox"
-                      id="recurring"
-                      checked={isRecurring}
-                      onChange={handleRecurringChange}
-                      className="h-4 w-4 text-youth-purple rounded border-gray-300 focus:ring-youth-purple"
-                    />
-                    <label htmlFor="recurring" className="text-youth-dark-gray">
-                      আমি মাসিক অনুদান দিতে চাই
-                    </label>
-                  </div>
-                  {isRecurring && (
-                    <p className="text-sm text-gray-500 mt-2">
-                      আপনি যেকোনো সময় আপনার মাসিক অনুদান বন্ধ করতে পারবেন।
-                    </p>
-                  )}
-                </div>
-                
-                <div className="mb-6">
-                  <label className="block text-sm font-medium text-youth-dark-gray mb-2">আপনার তথ্য</label>
-                  <div className="space-y-3">
-                    <input
-                      type="text"
-                      placeholder="নাম"
-                      className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-youth-purple"
-                    />
-                    <input
-                      type="email"
-                      placeholder="ইমেইল"
-                      className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-youth-purple"
-                    />
-                    <input
-                      type="tel"
-                      placeholder="মোবাইল নম্বর"
-                      className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-youth-purple"
-                    />
-                  </div>
-                </div>
-                
-                <div className="mb-6">
-                  <div className="flex items-center gap-2">
-                    <input
-                      type="checkbox"
-                      id="anonymous"
-                      className="h-4 w-4 text-youth-purple rounded border-gray-300 focus:ring-youth-purple"
-                    />
-                    <label htmlFor="anonymous" className="text-youth-dark-gray">
-                      আমার অনুদান বেনামী রাখুন
-                    </label>
-                  </div>
-                </div>
-                
-                <Button type="submit" className="w-full bg-youth-purple hover:bg-youth-purple/90 py-3 text-lg">
-                  অনুদান দিন
-                </Button>
-                
-                <p className="text-center text-sm text-gray-500 mt-4">
-                  সকল পেমেন্ট সুরক্ষিত এবং এনক্রিপ্টেড।
+              
+              {/* Google Form Button */}
+              <div className="text-center mb-8">
+                <p className="text-youth-dark-gray mb-4">
+                  অনুদান ফর্ম পূরণ করতে নিচের বাটনে ক্লিক করুন
                 </p>
-              </form>
+                <Button 
+                  onClick={handleGoogleFormClick}
+                  className="w-full bg-youth-purple hover:bg-youth-purple/90 py-3 text-lg"
+                >
+                  Google Form এ যান
+                </Button>
+              </div>
+              
+              <div className="mb-6">
+                <label className="block text-sm font-medium text-youth-dark-gray mb-2">আপনার অনুদান কতটা পার্থক্য তৈরি করতে পারে</label>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
+                  {donationOptions.map((option) => (
+                    <button
+                      key={option.amount}
+                      type="button"
+                      className={`p-2 text-center rounded-md border ${
+                        selectedAmount === option.amount 
+                          ? 'bg-youth-purple text-white border-youth-purple' 
+                          : 'border-gray-300 hover:border-youth-purple hover:bg-youth-purple/10'
+                      }`}
+                      onClick={() => handleDonationSelect(option.amount)}
+                    >
+                      {option.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
             
             <div className="mt-8 bg-white p-6 rounded-lg shadow-sm">
