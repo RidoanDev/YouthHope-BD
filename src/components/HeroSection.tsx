@@ -3,16 +3,12 @@ import { Link } from 'react-router-dom';
 const HeroSection = () => {
   // Array of online humanitarian/helping images
   const backgroundImages = [
-    'https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80', // Volunteers helping
-    'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80', // Hands together
-    'https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80', // People meeting
-    'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80', // Group helping
-    'https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'  // Teamwork
+    'https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80',
+    'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+    'https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80',
+    'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+    'https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'
   ];
-
-  // Animation duration calculation (2 seconds per image)
-  const imageDuration = 2; // seconds
-  const totalDuration = backgroundImages.length * imageDuration;
 
   return (
     <section className="hero-section relative h-screen flex items-center justify-center">
@@ -21,18 +17,18 @@ const HeroSection = () => {
         {backgroundImages.map((image, index) => (
           <div 
             key={index}
-            className="absolute inset-0 bg-cover bg-center opacity-0 animate-fade-in-out"
+            className="absolute inset-0 bg-cover bg-center opacity-0"
             style={{
               backgroundImage: `url(${image})`,
-              animationDelay: `${index * imageDuration}s`,
-              animationDuration: `${totalDuration}s`
+              animation: `fadeInOut ${backgroundImages.length * 2}s infinite`,
+              animationDelay: `${index * 2}s`
             }}
           />
         ))}
         <div className="absolute inset-0 bg-black bg-opacity-50" />
       </div>
       
-      <div className="hero-content text-center text-white animate-fade-in relative z-10 px-4">
+      <div className="hero-content text-center text-white relative z-10 px-4">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Youth Hope Bangladesh</h1>
         <p className="text-xl md:text-2xl mb-8">আমরা তরুণদের ভবিষ্যৎ গড়ি</p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -44,6 +40,17 @@ const HeroSection = () => {
           </Link>
         </div>
       </div>
+
+      {/* Add this style tag for the animation */}
+      <style jsx>{`
+        @keyframes fadeInOut {
+          0% { opacity: 0; }
+          10% { opacity: 1; }
+          20% { opacity: 1; }
+          30% { opacity: 0; }
+          100% { opacity: 0; }
+        }
+      `}</style>
     </section>
   );
 };
