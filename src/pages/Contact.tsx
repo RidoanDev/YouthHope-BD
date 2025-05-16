@@ -1,63 +1,8 @@
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
 import Layout from '../components/Layout';
-import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
 import { toast } from '@/components/ui/use-toast';
 
-const formSchema = z.object({
-  name: z.string().min(2, {
-    message: 'নাম কমপক্ষে ২ অক্ষর হতে হবে।',
-  }),
-  email: z.string().email({
-    message: 'সঠিক ইমেইল ঠিকানা দিন।',
-  }),
-  subject: z.string().min(5, {
-    message: 'বিষয় কমপক্ষে ৫ অক্ষর হতে হবে।',
-  }),
-  message: z.string().min(10, {
-    message: 'বার্তা কমপক্ষে ১০ অক্ষর হতে হবে।',
-  }),
-});
-
 const Contact = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: '',
-      email: '',
-      subject: '',
-      message: '',
-    },
-  });
-
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    setIsSubmitting(true);
-
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      toast({
-        title: 'বার্তা পাঠানো হয়েছে!',
-        description: 'আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।',
-      });
-      form.reset();
-    }, 1500);
-  }
-
   return (
     <Layout>
       <div className="bg-youth-gray py-12">
@@ -71,91 +16,6 @@ const Contact = () => {
 
       <div className="section-container">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div>
-            <h2 className="text-2xl font-bold mb-6">
-              আমাদের সাথে যোগাযোগ করুন
-            </h2>
-            <p className="mb-6 text-youth-dark-gray">
-              আপনার যেকোন প্রশ্ন, মতামত বা পরামর্শ জানাতে এই ফর্মটি পূরণ করুন।
-              আমরা যত দ্রুত সম্ভব আপনার সাথে যোগাযোগ করব।
-            </p>
-
-            <Form {...form}>
-              <form
-                onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-6"
-              >
-                <FormField
-                  control={form.control}
-                  name="name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>নাম</FormLabel>
-                      <FormControl>
-                        <Input placeholder="আপনার নাম লিখুন" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>ইমেইল</FormLabel>
-                      <FormControl>
-                        <Input placeholder="আপনার ইমেইল লিখুন" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="subject"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>বিষয়</FormLabel>
-                      <FormControl>
-                        <Input placeholder="বার্তার বিষয় লিখুন" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>বার্তা</FormLabel>
-                      <FormControl>
-                        <Textarea
-                          placeholder="আপনার বার্তা লিখুন"
-                          className="min-h-[120px]"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <Button
-                  type="submit"
-                  className="w-full bg-youth-purple hover:bg-youth-purple/90"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? 'প্রেরণ করা হচ্ছে...' : 'বার্তা পাঠান'}
-                </Button>
-              </form>
-            </Form>
-          </div>
-
           <div>
             <h2 className="text-2xl font-bold mb-6">যোগাযোগের ঠিকানা</h2>
 
@@ -300,18 +160,21 @@ const Contact = () => {
               </div>
             </div>
           </div>
-        </div>
 
-        <div className="mt-12 rounded-lg overflow-hidden shadow-md h-96">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57903.25844035662!2d89.34950908223947!3d24.84887693834068!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fc54e7e81df441%3A0x27133ed921fe73f4!2sBogra!5e0!3m2!1sen!2sbd!4v1715344321237!5m2!1sen!2sbd"
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen={true}
-            loading="lazy"
-            title="Bogura Location Map"
-          ></iframe>
+          <div>
+            <h2 className="text-2xl font-bold mb-6">আমাদের অবস্থান</h2>
+            <div className="rounded-lg overflow-hidden shadow-md h-96">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57903.25844035662!2d89.34950908223947!3d24.84887693834068!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fc54e7e81df441%3A0x27133ed921fe73f4!2sBogra!5e0!3m2!1sen!2sbd!4v1715344321237!5m2!1sen!2sbd"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                title="Bogura Location Map"
+              ></iframe>
+            </div>
+          </div>
         </div>
       </div>
     </Layout>
