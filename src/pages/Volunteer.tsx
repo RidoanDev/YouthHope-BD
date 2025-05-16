@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import Layout from '../components/Layout';
 import { Button } from "@/components/ui/button";
@@ -61,42 +60,13 @@ const volunteerStories = [
 
 const Volunteer = () => {
   const [selectedTeam, setSelectedTeam] = useState("");
-  const [formStep, setFormStep] = useState(1);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    address: "",
-    education: "",
-    experience: "",
-    reason: "",
-    team: ""
-  });
 
   const handleTeamSelect = (teamName: string) => {
     setSelectedTeam(teamName);
-    setFormData({...formData, team: teamName});
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData({...formData, [name]: value});
-  };
-
-  const handleNextStep = () => {
-    setFormStep(formStep + 1);
-  };
-
-  const handlePrevStep = () => {
-    setFormStep(formStep - 1);
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log(formData);
-    // Show success message or redirect
-    setFormStep(3);
+  const handleGoogleFormClick = () => {
+    window.open("https://forms.gle/MK2bWVw4T92cyqQK8", "_blank");
   };
 
   return (
@@ -208,153 +178,26 @@ const Volunteer = () => {
               <p className="text-youth-dark-gray">ইয়ুথ হোপ বাংলাদেশের স্বেচ্ছাসেবক হওয়ার জন্য নিচের ফর্মটি পূরণ করুন</p>
             </div>
 
-            <div className="p-6">
-              {formStep === 1 && (
-                <div>
-                  <div className="mb-6">
-                    <h3 className="text-lg font-semibold mb-2">স্টেপ ১: ব্যক্তিগত তথ্য</h3>
-                    <div className="space-y-4">
-                      <div>
-                        <label className="block text-sm font-medium text-youth-dark-gray mb-1">নাম</label>
-                        <input 
-                          type="text" 
-                          name="name" 
-                          value={formData.name}
-                          onChange={handleInputChange}
-                          className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-youth-purple" 
-                          required
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-youth-dark-gray mb-1">ইমেইল</label>
-                        <input 
-                          type="email" 
-                          name="email" 
-                          value={formData.email}
-                          onChange={handleInputChange}
-                          className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-youth-purple" 
-                          required
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-youth-dark-gray mb-1">ফোন নম্বর</label>
-                        <input 
-                          type="tel" 
-                          name="phone" 
-                          value={formData.phone}
-                          onChange={handleInputChange}
-                          className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-youth-purple" 
-                          required
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-youth-dark-gray mb-1">ঠিকানা</label>
-                        <input 
-                          type="text" 
-                          name="address" 
-                          value={formData.address}
-                          onChange={handleInputChange}
-                          className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-youth-purple" 
-                          required
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex justify-end">
-                    <Button 
-                      onClick={handleNextStep} 
-                      className="bg-youth-purple hover:bg-youth-purple/90"
-                      disabled={!formData.name || !formData.email || !formData.phone || !formData.address}
-                    >
-                      পরবর্তী
-                      <ChevronRight className="ml-1 h-4 w-4" />
-                    </Button>
-                  </div>
-                </div>
-              )}
-
-              {formStep === 2 && (
-                <div>
-                  <div className="mb-6">
-                    <h3 className="text-lg font-semibold mb-2">স্টেপ ২: আপনার অভিজ্ঞতা এবং আগ্রহ</h3>
-                    <div className="space-y-4">
-                      <div>
-                        <label className="block text-sm font-medium text-youth-dark-gray mb-1">শিক্ষাগত যোগ্যতা</label>
-                        <input 
-                          type="text" 
-                          name="education" 
-                          value={formData.education}
-                          onChange={handleInputChange}
-                          className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-youth-purple" 
-                          required
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-youth-dark-gray mb-1">পূর্বের অভিজ্ঞতা (যদি থাকে)</label>
-                        <textarea 
-                          name="experience" 
-                          value={formData.experience}
-                          onChange={handleInputChange}
-                          rows={3}
-                          className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-youth-purple"
-                        ></textarea>
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-youth-dark-gray mb-1">কেন আপনি স্বেচ্ছাসেবক হতে চান?</label>
-                        <textarea 
-                          name="reason" 
-                          value={formData.reason}
-                          onChange={handleInputChange}
-                          rows={3}
-                          className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-youth-purple"
-                          required
-                        ></textarea>
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-youth-dark-gray mb-1">টিম পছন্দ</label>
-                        <p className="text-youth-purple mb-2">
-                          {formData.team ? formData.team : "কোন টিম নির্বাচন করা হয়নি"}
-                        </p>
-                        <p className="text-sm text-gray-500">
-                          উপরে 'স্বেচ্ছাসেবক টিমসমূহ' সেকশন থেকে আপনার পছন্দের টিম নির্বাচন করুন।
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex justify-between">
-                    <Button 
-                      variant="outline" 
-                      onClick={handlePrevStep}
-                    >
-                      পূর্ববর্তী
-                    </Button>
-                    <Button 
-                      onClick={handleSubmit} 
-                      className="bg-youth-purple hover:bg-youth-purple/90"
-                      disabled={!formData.education || !formData.reason || !formData.team}
-                    >
-                      জমা দিন
-                    </Button>
-                  </div>
-                </div>
-              )}
-
-              {formStep === 3 && (
-                <div className="text-center py-8">
-                  <div className="h-16 w-16 bg-youth-purple/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Check className="h-8 w-8 text-youth-purple" />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-2">আবেদন সফলভাবে জমা হয়েছে!</h3>
-                  <p className="text-youth-dark-gray mb-6 max-w-md mx-auto">
-                    আপনার আবেদন পর্যালোচনা করা হবে এবং আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব। আপনার আগ্রহের জন্য ধন্যবাদ।
-                  </p>
-                  <Button className="bg-youth-purple hover:bg-youth-purple/90">
-                    হোমপেজে ফিরে যান
-                  </Button>
-                </div>
-              )}
+            <div className="p-6 text-center">
+              <div className="mb-6">
+                <p className="text-youth-dark-gray mb-4">
+                  অনুগ্রহ করে আমাদের Google Form এ আবেদন করুন। ফর্মটি পূরণ করতে নিচের বাটনে ক্লিক করুন:
+                </p>
+                <Button 
+                  onClick={handleGoogleFormClick}
+                  className="bg-youth-purple hover:bg-youth-purple/90 py-6 text-lg"
+                  size="lg"
+                >
+                  Google Form এ আবেদন করুন
+                </Button>
+              </div>
+              
+              <div className="bg-youth-soft-green p-4 rounded-lg">
+                <h3 className="font-medium mb-2">আপনার নির্বাচিত টিম: {selectedTeam || "কোন টিম নির্বাচন করা হয়নি"}</h3>
+                <p className="text-sm text-youth-dark-gray">
+                  টিম নির্বাচন না করে থাকলে, উপরের 'স্বেচ্ছাসেবক টিমসমূহ' সেকশন থেকে আপনার পছন্দের টিম নির্বাচন করুন।
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -396,7 +239,7 @@ const Volunteer = () => {
           </p>
           <Button 
             className="bg-youth-purple hover:bg-youth-purple/90"
-            onClick={() => window.scrollTo({top: 700, behavior: 'smooth'})}
+            onClick={handleGoogleFormClick}
           >
             আবেদন করুন
           </Button>
