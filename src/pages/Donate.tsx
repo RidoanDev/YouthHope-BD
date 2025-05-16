@@ -129,7 +129,7 @@ const Donate = () => {
                   onClick={handleGoogleFormClick}
                   className="w-full bg-youth-purple hover:bg-youth-purple/90 py-3 text-lg"
                 >
-                  Google Form এ যান
+                  অনুদান ফরম খুলুন
                 </Button>
               </div>
               
