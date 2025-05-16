@@ -9,15 +9,19 @@ const Index = () => {
   return (
     <Layout>
       <HeroSection />
-      {/* ভিডিও সেকশন যোগ করা হয়েছে */}
+      {/* রেস্পন্সিভ ভিডিও সেকশন */}
       <div className="container mx-auto px-4 py-12">
-        <div className="rounded-lg shadow-md overflow-hidden max-w-4xl mx-auto">
-          <iframe 
-            src="https://streamable.com/e/mm5pwj" 
-            frameBorder="0" 
-            allowFullScreen
-            className="w-full h-full aspect-video"
-          ></iframe>
+        <div className="rounded-lg shadow-md overflow-hidden max-w-4xl mx-auto bg-black">
+          <div className="relative pb-[56.25%] h-0"> {/* 16:9 aspect ratio */}
+            <iframe 
+              src="https://streamable.com/e/mm5pwj" 
+              frameBorder="0" 
+              allowFullScreen
+              className="absolute top-0 left-0 w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              loading="lazy"
+            ></iframe>
+          </div>
         </div>
       </div>
       <StatsSection />
