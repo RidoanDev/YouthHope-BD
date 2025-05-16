@@ -136,26 +136,25 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-8 border-t border-white/20 pt-6 flex flex-col md:flex-row justify-between">
-          <p>
-            © {new Date().getFullYear()} Youth Hope Bangladesh। সর্বস্বত্ব
-            সংরক্ষিত।
-          </p>
-          <div className="mt-4 md:mt-0">
-            <Link to="/privacy" className="mr-4 hover:text-youth-green">
-              প্রাইভেসি পলিসি
-            </Link>
-            <Link
-              to="/ইয়ুথ-হোপ-সংবিধান .pdf"
-              className="hover:text-youth-green"
-            >
-              নিয়ম ও শর্তাবলী
-            </Link>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
+       <div className="mt-8 border-t border-white/20 pt-6 flex flex-col md:flex-row justify-between">
+  <p>
+    © {new Date().getFullYear()} Youth Hope Bangladesh। সর্বস্বত্ব
+    সংরক্ষিত।
+  </p>
+  <div className="mt-4 md:mt-0">
+    <Link
+      to="https://drive.google.com/file/d/13Y1FHoH6dLubatSBdT7bkQObf2Hcjmue/view"
+      className="hover:text-youth-green"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      নিয়ম ও শর্তাবলী
+    </Link>
+  </div>
+</div>
+</div>
+</footer>
+);
 };
 
 export default Footer;
