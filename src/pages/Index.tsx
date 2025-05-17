@@ -14,7 +14,7 @@ const Index = () => {
         <div className="rounded-lg shadow-md overflow-hidden max-w-4xl mx-auto bg-black">
           <div className="relative pb-[56.25%] h-0"> {/* 16:9 aspect ratio */}
             <iframe 
-              src="https://streamable.com/e/mm5pwj" 
+              src="https://drive.google.com/file/d/1pYcnyCX-R91YKemrjXXqFdOb8Cx6ocLj/view" 
               frameBorder="0" 
               allowFullScreen
               className="absolute top-0 left-0 w-full h-full"
